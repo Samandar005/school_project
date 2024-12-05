@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Management System</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,700,900">
+  <style>
+    html,
+    body {
+      background-color: #0d0d0d;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: Lato, sans-serif;
+    }
+
+    #title {
+      position: absolute;
+      width: 100%;
+      top: 10%;
+      text-align: center;
+      z-index: 10;
+    }
+
+    h1 {
+      color: #FFFFFF;
+      font-size: 60px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(-50px);
+      animation: fadeInSlide 1.5s ease-out forwards;
+    }
+
+    h1 span {
+      font-size: 80px;
+      display: block;
+    }
+
+    @keyframes fadeInSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #layers {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      overflow: hidden;
+    }
+
+    .layer {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      opacity: 0;
+      animation: zoom 5s linear infinite;
+    }
+
+    .layer.layer-2 {
+      animation-delay: 1s;
+    }
+
+    .layer.layer-3 {
+      animation-delay: 2s;
+    }
+
+    .layer.layer-4 {
+      animation-delay: 3s;
+    }
+
+    .layer.layer-5 {
+      animation-delay: 4s;
+    }
+
+    .star {
+      width: 11px;
+      height: 11px;
+      display: inline-block;
+      position: absolute;
+      fill: #ffffff;
+    }
+
+    .star:nth-child(3n+3) {
+      fill: #FEC777;
+    }
+
+    .star:nth-child(5n+5) {
+      fill: #498FB3;
+    }
+
+    @keyframes zoom {
+      0% {
+        transform: scale(0.1);
+        opacity: 0;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    .links-container {
+      position: absolute;
+      top: 30%;
+      width: 100%;
+      text-align: center;
+    }
+
+    a {
+      color: #FFFFFF;
+      font-size: 20px;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-decoration: none;
+      margin: 10px;
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInLinks 1s ease-out forwards;
+    }
+
+    a:nth-child(1) {
+      animation-delay: 2s;
+    }
+
+    a:nth-child(2) {
+      animation-delay: 2.5s;
+    }
+
+    a:nth-child(3) {
+      animation-delay: 3s;
+    }
+
+    a:hover {
+      color: #F50;
+    }
+
+    @keyframes fadeInLinks {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="title">
+    <h1>
+      <span>Welcome</span> to School Management System
+    </h1>
+  </div>
+
+  <div id="layers">
+    <div class="layer layer-1"></div>
+    <div class="layer layer-2"></div>
+    <div class="layer layer-3"></div>
+    <div class="layer layer-4"></div>
+    <div class="layer layer-5"></div>
+  </div>
+
+  <div class="links-container">
+    <a href="/students/">Student List</a>
+    <a href="/teachers/">Teacher List</a>
+    <a href="/groups/">Group List</a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    (function ($) {
+      $(document).ready(function () {
+        $('.layer').each(function () {
+          var $this = $(this),
+            limit = 30,
+            $star = [];
+
+          while (limit) {
+            $star = $('<span/>').addClass('star');
+            $star.html('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M10.744,5.372C7.777,5.372,5.372,2.967,5.372,0s2.405-5.372,5.372-5.372c2.967,0,5.372,2.405,5.372,5.372C16.116-0.005,13.711,5.372,10.744,5.372z"></path></svg>');
+            $star.css({
+              left: randomInt(0, 100) + '%',
+              top: randomInt(0, 100) + '%',
+              animationDuration: randomNum(2, 10) + 's',
+              animationDelay: randomNum(0.2, 0.8) + 's'
+            });
+            $this.append($star);
+            limit--;
+          }
+        });
+
+        function randomInt(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function randomNum(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+      });
+    })(jQuery);
+  </script>
+</body>
+
+</html>

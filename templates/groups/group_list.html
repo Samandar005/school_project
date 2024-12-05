@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            padding: 20px 0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .group-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+            font-size: 1.2em;
+        }
+        .group-item a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .group-item a:hover {
+            color: #45a049;
+        }
+        .buttons a {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .buttons a:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Group List</h1>
+</header>
+
+<div class="container">
+    <div class="buttons">
+        <a href="/" class="back-home">Back to Home Page</a>
+        <a href="/groups/create/" class="create-group">Create Group</a>
+    </div>
+
+    <ul class="group-list">
+        {% for group in groups %}
+            <li class="group-item">
+                <div>
+                    <strong>{{ group.name }} ({{ group.type }})</strong>
+                </div>
+                <a href="{% url 'groups:group_detail' group.pk %}">View Details</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>

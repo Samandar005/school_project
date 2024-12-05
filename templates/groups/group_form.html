@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Group</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            padding: 20px 0;
+            background-color: #4CAF50;
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: block;
+            color: #f4f4f9;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #333;
+            color: #fff;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(72, 168, 58, 0.4);
+        }
+        .buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .buttons a {
+            display: inline-block;
+            padding: 12px 20px;
+            text-decoration: none;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .buttons a:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Create Group</h1>
+</header>
+
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="name">Group Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Enter group name"><br>
+
+        <label for="type">Group Type:</label>
+        <input type="text" id="type" name="type" required placeholder="Enter group type"><br>
+
+        <button type="submit">Save</button>
+    </form>
+
+    <div class="buttons">
+        <a href="/" class="back-home">Back to Home Page</a>
+        <a href="/groups/" class="back-to-list">Back to Group List</a>
+    </div>
+</div>
+
+</body>
+</html>

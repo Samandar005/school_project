@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            padding: 20px 0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .student-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+            font-size: 1.2em;
+        }
+        .student-item a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .student-item a:hover {
+            color: #45a049;
+        }
+        .buttons a {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .buttons a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student List</h1>
+    <div class="container">
+        <div class="buttons">
+            <a href="{% url 'home_page' %}">Back to Home</a>
+        </div>
+
+        <div class="student-list">
+            {% for student in students %}
+                <div class="student-item">
+                    <div>
+                        <strong>{{ student.first_name }} {{ student.last_name }}</strong>
+                    </div>
+                    <div>
+                        <a href="{% url 'students:detail' student.pk %}">View Details</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="buttons">
+            <a href="{% url 'students:create' %}">Create New Student</a>
+        </div>
+    </div>
+</body>
+</html>

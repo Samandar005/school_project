@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons a {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .buttons a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Detail</h1>
+        <p><strong>First Name:</strong> {{ student.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ student.last_name }}</p>
+        <p><strong>Age:</strong> {{ student.age }}</p>
+        <p><strong>Email:</strong> {{ student.email }}</p>
+
+        <div class="buttons">
+            <a href="{% url 'students:list' %}">Back to List</a>
+            <a href="{% url 'home_page' %}">Back to Home</a>
+            
+        </div>
+    </div>
+    <a href="{% url 'students:delete' student.id %}"
+       style="background-color: #f44336; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Delete
+        Detail</a>
+</body>
+</html>

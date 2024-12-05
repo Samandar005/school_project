@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ffffff;
+        }
+        .teacher-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #444;
+        }
+        .teacher-item p {
+            color: #e4e4e4;
+        }
+        .teacher-item a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .buttons a {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .buttons a:hover {
+            background-color: #45a049;
+        }
+        .back-button {
+            background-color: #2196F3;
+        }
+        .back-button:hover {
+            background-color: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Teacher List</h1>
+        {% for teacher in teachers %}
+            <div class="teacher-item">
+                <p><strong>{{ teacher.first_name }} {{ teacher.last_name }}</strong></p>
+                <p>Subject: {{ teacher.subject }}</p>
+                <a href="{% url 'teachers:teacher_detail' teacher.id %}">View Details</a>
+            </div>
+        {% endfor %}
+
+        <div class="buttons">
+            <a class="back-button" href="{% url 'home_page' %}">Back to Home</a>
+            <a href="{% url 'teachers:teacher_create' %}">Create Teacher</a>
+        </div>
+    </div>
+</body>
+</html>

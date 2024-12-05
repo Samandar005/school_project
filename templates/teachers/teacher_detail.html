@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ffffff;
+        }
+        .teacher-detail {
+            margin-bottom: 20px;
+        }
+        .teacher-detail p {
+            color: #e4e4e4;
+            font-size: 1.2em;
+        }
+        .buttons a {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .buttons a:hover {
+            background-color: #45a049;
+        }
+        .delete-button {
+            background-color: #f44336;
+        }
+        .delete-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Teacher Detail</h1>
+        <div class="teacher-detail">
+            <p><strong>First Name:</strong> {{ teacher.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ teacher.last_name }}</p>
+            <p><strong>Subject:</strong> {{ teacher.subject }}</p>
+        </div>
+
+        <div class="buttons">
+            <a href="{% url 'teachers:teacher_list' %}">Back to List</a>
+            <a href="{% url 'teachers:teacher_create' %}">Create Teacher</a>
+            <a class="delete-button" href="{% url 'teachers:teacher_delete' teacher.id %}">Delete</a>
+        </div>
+    </div>
+</body>
+</html>
